@@ -24,7 +24,7 @@ class Feeder(data.Dataset):
         random.seed(seed)
         self.features = np.load(feat_path)
         self.knn_graph = np.load(knn_graph_path)[:,:k_at_hop[0]+1]
-        self.labels = np.load(label_path)
+        self.labels = np.load(label_path,allow_pickle=True)
         self.num_samples = len(self.features)
         self.depth = len(k_at_hop)
         self.k_at_hop = k_at_hop

@@ -1,0 +1,2 @@
+python train.py --feat_path features/train_features.npy --knn_graph_path features/train_knn.npy --label_path features/train_labels.npy
+python train.py --feat_path features/handcrawl_features.npy --knn_graph_path features/handcrawl_knn.npy --label_path features/handcrawl_labels.npy

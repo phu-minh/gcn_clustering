@@ -47,7 +47,7 @@ def main(args):
             trainset, batch_size=args.batch_size,
             num_workers=args.workers, shuffle=True, pin_memory=True) 
 
-    net = model.gcn().cuda()
+    net = model.gcn()#.cuda()
     opt = torch.optim.SGD(net.parameters(), args.lr, 
                           momentum=args.momentum, 
                           weight_decay=args.weight_decay) 
