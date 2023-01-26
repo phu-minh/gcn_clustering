@@ -47,8 +47,8 @@ class GraphConv(nn.Module):
 class gcn(nn.Module):
     def __init__(self):
         super(gcn, self).__init__()
-        self.bn0 = nn.BatchNorm1d(512, affine=False)
-        self.conv1 = GraphConv(512, 512, MeanAggregator)
+        self.bn0 = nn.BatchNorm1d(128, affine=False)
+        self.conv1 = GraphConv(128, 512, MeanAggregator)
         self.conv2 = GraphConv(512, 512, MeanAggregator)
         self.conv3 = GraphConv(512, 256, MeanAggregator)
         self.conv4 = GraphConv(256, 256,MeanAggregator)
