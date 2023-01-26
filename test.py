@@ -150,16 +150,14 @@ def validate(loader, net, crit):
                         i, len(loader), batch_time=batch_time,
                         data_time=data_time, losses=losses, accs=accs, 
                         precisions=precisions, recalls=recalls))
-
-	node_list = node_list.long().squeeze().numpy()
+        node_list = node_list.long().squeeze().numpy()
         bs = feat.size(0)
         for b in range(bs): 
             cidb = cid[b].int().item() 
             nl = node_list[b]
-
             for j,n in enumerate(h1id[b]):
                 n = n.item()
-	        edges.append([nl[cidb], nl[n]])
+                edges.append([nl[cidb], nl[n]])
                 scores.append(pred[b*args.k_at_hop[0]+j,1].item())
     edges = np.asarray(edges)
     scores = np.asarray(scores)
@@ -179,7 +177,7 @@ if __name__ == '__main__':
     # misc
     working_dir = osp.dirname(osp.abspath(__file__)) 
     parser.add_argument('--seed', default=1, type=int)
-    parser.add_argument('--workers', default=16, type=int)
+    parser.add_argument('--workers', default=1, type=int)
     parser.add_argument('--print_freq', default=40, type=int)
 
     # Optimization args
@@ -188,7 +186,7 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', type=float, default=1e-4)
     parser.add_argument('--epochs', type=int, default=20)
     
-    parser.add_argument('--batch_size', type=int, default=32)
+    parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--k-at-hop', type=int, nargs='+', default=[20,5])
     parser.add_argument('--active_connection', type=int, default=5)
 

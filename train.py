@@ -141,7 +141,7 @@ if __name__ == '__main__':
     parser.add_argument('--logs-dir', type=str, metavar='PATH', 
                         default=osp.join(working_dir, 'logs'))
     parser.add_argument('--seed', default=1, type=int)
-    parser.add_argument('--workers', default=16, type=int)
+    parser.add_argument('--workers', default=1, type=int)
     parser.add_argument('--print_freq', default=200, type=int)
 
     # Optimization args
@@ -151,7 +151,7 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', type=int, default=4)
     
     # Training args
-    parser.add_argument('--batch_size', type=int, default=16)
+    parser.add_argument('--batch_size', type=int, default=128)
     parser.add_argument('--feat_path', type=str, metavar='PATH',
                         default=osp.join(working_dir, '../facedata/CASIA.feas.npy'))
     parser.add_argument('--knn_graph_path', type=str, metavar='PATH',

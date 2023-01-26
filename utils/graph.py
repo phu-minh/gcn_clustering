@@ -37,7 +37,7 @@ def connected_components(nodes, score_dict, th):
             if th is not None:
                 neighbors = {l for l in n.links if score_dict[tuple(sorted([n.name, l.name]))] >= th}
             else:
-		neighbors = n.links
+                neighbors = n.links
             neighbors.difference_update(group)
             nodes.difference_update(neighbors)
             group.update(neighbors)
