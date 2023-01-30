@@ -156,9 +156,12 @@ def validate(loader, net, crit):
             cidb = cid[b].int().item() 
             nl = node_list[b]
             for j,n in enumerate(h1id[b]):
-                n = n.item()
-                edges.append([nl[cidb], nl[n]])
-                scores.append(pred[b*args.k_at_hop[0]+j,1].item())
+                if b*args.k_at_hop[0]+j < pred.shape[0]:
+                  #print(b*args.k_at_hop[0]+j)
+                  #print(pred.shape[0])
+                  n = n.item()
+                  edges.append([nl[cidb], nl[n]])
+                  scores.append(pred[b*args.k_at_hop[0]+j,1].item())
     edges = np.asarray(edges)
     scores = np.asarray(scores)
     return edges, scores
@@ -186,7 +189,7 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', type=float, default=1e-4)
     parser.add_argument('--epochs', type=int, default=20)
     
-    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--k-at-hop', type=int, nargs='+', default=[20,5])
     parser.add_argument('--active_connection', type=int, default=5)
 
