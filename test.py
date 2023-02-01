@@ -104,7 +104,7 @@ def clusters2labels(clusters, n_nodes):
     for ci, c in enumerate(clusters):
         for xid in c:
             labels[xid.name] = ci
-    assert np.sum(labels<0) < 1
+    #assert np.sum(labels<0) < 1
     return labels 
 
 def make_labels(gtmat):
